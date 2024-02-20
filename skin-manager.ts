@@ -57,6 +57,7 @@ export namespace SkinManager {
   }
 
   export function sendSkinToAll(pl: Player, skin: SerializedSkin): void {
-    sendSkin(pl, skin, bedrockServer.level.getPlayers());
+    const pls = bedrockServer.level.getPlayers().filter(p => !p.isSimulated())
+    sendSkin(pl, skin, pls);
   }
 }
